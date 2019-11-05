@@ -29,6 +29,12 @@ function App() {
     setTodos(newTodos)
   }
 
+  const deleteTodo = (index: number):void => {
+    const newTodos: ITodo[] = [... todos]
+    newTodos.splice(index, 1)
+    setTodos(newTodos)
+  }
+
   return (
     <>
       <h1>Todo List</h1>
@@ -41,6 +47,7 @@ function App() {
         <div key={index}>
         <div style={{textDecoration: todo.complete ? 'line-through': ''}}>{todo.text}</div>
         <button type='button' onClick={() => completeTodo(index)}>{todo.complete ? 'Incomplete': 'Complete'}</button>
+        <button type='button' onClick={() => deleteTodo(index)}>Delete</button>
         </div>
         ))}
       </section>
